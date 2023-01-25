@@ -10,8 +10,6 @@ on:
 jobs:
   version-module:
     runs-on: ubuntu-latest
-    env:
-      VERSION_TYPE: ${{ env.VERSION_TYPE }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -25,25 +23,24 @@ jobs:
     - name: Install packages
       run: npm ci
 
-    - name: Get version increment type
-      id: version_increment_prompt
-      uses: actions/create-prompt-action@v1
-      with:
-        message: "Please select the version increment type"
-        options: |
-          patch
-          minor
-          major
+    - name: Install version-incrementer package
+      run: npm install version-incrementer
 
     - name: Create Tag
       run: |
-        # Get the current version
-        CURRENT_VERSION=$(npm version --json | jq -r '.raw')
-        # Get the version increment type from the prompt
-        VERSION_TYPE=${{ steps.version_increment_prompt.outputs.selected_option }}
-        # Increment the version
-        NEW_VERSION=$(./node_modules/.bin/semver -i $VERSION_TYPE $CURRENT_VERSION)
-        # Create the new tag
-        git tag -a $NEW_VERSION -m "Tag created by Github Actions"
-        # Push the new tag
-        git push origin $NEW_VERSION
+        const VersionIncrementer = require('version-incrementer');
+        const incrementer = new VersionIncrementer();
+        let version = '1.0.0';
+        let incrementedVersion;
+        while (version !== '2.0.0') {
+          incrementedVersion = incrementer.increment(version, 'patch');
+          if (incrementedVersion.endsWith('9.9')) {
+            incrementedVersion = incrementer.increment(version, 'minor');
+          }
+          if (incrementedVersion.endsWith('.9')) {
+            incrementedVersion = incrementer.increment(version, 'major');
+          }
+          version = incrementedVersion;
+          git tag -a $version -m "Tag created by Github Actions"
+          git push origin $version
+        }
