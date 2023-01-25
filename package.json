@@ -1,0 +1,19 @@
+{
+  "name": "terraform-aws-privatemodule",
+  "version": "2.0.0",
+  "description": "to test gh",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eliohoyeck/terraform-aws-privatemodule.git"
+  },
+  "author": "eelhoyeck",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Eliohoyeck/terraform-aws-privatemodule/issues"
+  },
+  "homepage": "https://github.com/Eliohoyeck/terraform-aws-privatemodule#readme"
+}
