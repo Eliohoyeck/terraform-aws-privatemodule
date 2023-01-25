@@ -3,7 +3,7 @@ name: Version Module
 on:
   push:
     branches:
-      - main
+      - master
     paths:
       - 'modules/**'
 
@@ -41,6 +41,6 @@ jobs:
             incrementedVersion = incrementer.increment(version, 'major');
           }
           version = incrementedVersion;
-          git tag -a $version -m "Tag created by Github Actions"
-          git push origin $version
-        }
+          run: npm --no-git-tag-version version ${incrementedVersion}
+          run: git tag -a ${version} -m "Tag created by Github Actions"
+          run: git push origin ${version}
