@@ -28,19 +28,21 @@ jobs:
 
     - name: Create Tag
       run: |
-        const VersionIncrementer = require('version-incrementer');
-        const incrementer = new VersionIncrementer();
-        let version = '1.0.0';
+        let version = '2.0.0';
         let incrementedVersion;
         while (version !== '10.0.0') {
-          incrementedVersion = incrementer.increment(version, 'patch');
-          if (incrementedVersion.endsWith('9.9')) {
-            incrementedVersion = incrementer.increment(version, 'minor');
+          incrementedVersion = version.split(".");
+          if (incrementedVersion[2] !== '9') {
+            incrementedVersion[2] = (parseInt(incrementedVersion[2]) + 1).toString();
+          }else if(incrementedVersion[1] !== '9'){
+            incrementedVersion[1] = (parseInt(incrementedVersion[1]) + 1).toString();
+            incrementedVersion[2] = '0';
+          }else{
+            incrementedVersion[0] = (parseInt(incrementedVersion[0]) + 1).toString();
+            incrementedVersion[1] = '0';
+            incrementedVersion[2] = '0';
           }
-          if (incrementedVersion.endsWith('.9')) {
-            incrementedVersion = incrementer.increment(version, 'major');
-          }
-          version = incrementedVersion;
-          npm --no-git-tag-version version ${incrementedVersion}
+          version = incrementedVersion.join(".");
+          npm version ${version} --no-git-tag-version
           git tag -a ${version} -m "Tag created by Github Actions"
           git push origin ${version}
