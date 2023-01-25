@@ -1,0 +1,47 @@
+name: Version Module
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  version-module:
+    runs-on: ubuntu-latest
+    env:
+      VERSION_TYPE: ${{ env.VERSION_TYPE }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Cache node modules
+      uses: actions/cache@v2
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
+    - name: Install packages
+      run: npm ci
+
+    - name: Get version increment type
+      id: version_increment_prompt
+      uses: actions/create-prompt-action@v1
+      with:
+        message: "Please select the version increment type"
+        options: |
+          patch
+          minor
+          major
+
+    - name: Create Tag
+      run: |
+        # Get the current version
+        CURRENT_VERSION=$(npm version --json | jq -r '.raw')
+        # Get the version increment type from the prompt
+        VERSION_TYPE=${{ steps.version_increment_prompt.outputs.selected_option }}
+        # Increment the version
+        NEW_VERSION=$(./node_modules/.bin/semver -i $VERSION_TYPE $CURRENT_VERSION)
+        # Create the new tag
+        git tag -a $NEW_VERSION -m "Tag created by Github Actions"
+        # Push the new tag
+        git push origin $NEW_VERSION
