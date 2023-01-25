@@ -3,7 +3,7 @@ name: Version Module
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - 'modules/**'
 
