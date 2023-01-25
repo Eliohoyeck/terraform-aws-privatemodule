@@ -18,5 +18,6 @@ jobs:
     - name: Bump version and push tag
       uses: anothrNick/github-tag-action@1.55.0 # Don't use @master unless you're happy to test the latest version
       env:
+        RELEASE_BRANCHES: main
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         WITH_V: true
