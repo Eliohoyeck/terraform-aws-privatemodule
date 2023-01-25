@@ -41,6 +41,6 @@ jobs:
             incrementedVersion = incrementer.increment(version, 'major');
           }
           version = incrementedVersion;
-          run: npm --no-git-tag-version version ${incrementedVersion}
-          run: git tag -a ${version} -m "Tag created by Github Actions"
-          run: git push origin ${version}
+          npm --no-git-tag-version version ${incrementedVersion}
+          git tag -a ${version} -m "Tag created by Github Actions"
+          git push origin ${version}
