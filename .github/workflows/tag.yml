@@ -39,7 +39,11 @@ jobs:
         MAJOR_STRING_TOKEN: 'major'
         DRY_RUN: true
     - name: Create custom tag
+      shell: bash
+      run: |
+        tag=$prefix-${{ steps.bump_version_and_push_tag.outputs.tag }}
+        echo "Custom tag: $new_tag"
       env:
-        CUSTOM_TAG: $prefix-${{ steps.bump_version_and_push_tag.outputs.tag }}
+        CUSTOM_TAG: $new_tag
     - name: Create new tag
       run: git tag env.CUSTOM_TAG
