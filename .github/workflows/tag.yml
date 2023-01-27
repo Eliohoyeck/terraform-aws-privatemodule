@@ -39,6 +39,6 @@ jobs:
         MAJOR_STRING_TOKEN: 'major'
         DRY_RUN: true
     - name: Set custom tag
-      run: echo ::set-env name=CUSTOM_TAG::$prefix-${{ steps.bump_version.outputs.tag }}
+      run: echo $prefix-${{ steps.bump_version.outputs.tag }} >> $new_tag
     - name: Create new tag
-      run: git tag $CUSTOM_TAG
+      run: git tag $new_tag
