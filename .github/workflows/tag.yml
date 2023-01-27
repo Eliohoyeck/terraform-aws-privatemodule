@@ -38,7 +38,9 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         MAJOR_STRING_TOKEN: 'major'
         DRY_RUN: true
-    - name: Set custom tag
-      run: echo $prefix-${{ steps.bump_version.outputs.tag }} >> $new_tag
+    - name: Create custom tag
+      run: echo "Custom tag: $prefix-${{ steps.bump_version.outputs.tag }}"
+      env:
+        CUSTOM_TAG: $prefix-${{ steps.bump_version.outputs.tag }}
     - name: Create new tag
-      run: git tag $new_tag
+      run: git tag env.CUSTOM_TAG
