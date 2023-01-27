@@ -9,11 +9,36 @@ jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
+    - name: Get modified folder path
+      run: |
+        modified_paths=$(echo ${{github.event.head_commit.modified}} | jq '.[]')
+        for path in $modified_paths; do
+          if [[ $path == modules/* ]]; then
+            echo "Modified folder path: $path"
+            break
+          fi
+        done
+    - name: Set prefix
+      run: |
+        prefix=""
+        for path in ${{github.event.head_commit.modified}}; do
+          if [[ $path == terraform/modules/* ]]; then
+            prefix=$(echo $path | cut -d'/' -f3)
+            break
+          fi
+        done
+        echo "Tag prefix: $prefix"
     - uses: actions/checkout@v3
       with:
         fetch-depth: '0'
     - name: Bump version and push tag
+      id: bump-version
       uses: anothrNick/github-tag-action@1.61.0
       env:
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }} #testing
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         MAJOR_STRING_TOKEN: 'major'
+        DRY_RUN: true
+    - name: Set custom tag
+      run: echo ::set-env name=CUSTOM_TAG::$prefix-${{ steps.bump_version.outputs.tag }}
+    - name: Create new tag
+      run: git tag $CUSTOM_TAG
