@@ -38,7 +38,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         MAJOR_STRING_TOKEN: 'major'
-        TAG_PREFIX: 'v'
+        TAG_PREFIX: 'elio'
     # - name: Create custom tag
     #   shell: bash
     #   run: |
