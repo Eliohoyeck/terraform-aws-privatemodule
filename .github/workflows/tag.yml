@@ -22,7 +22,7 @@ jobs:
       run: |
         prefix=""
         for path in ${{github.event.head_commit.modified}}; do
-          if [[ $path == terraform/modules/* ]]; then
+          if [[ $path == modules/* ]]; then
             prefix=$(echo $path | cut -d'/' -f3)
             break
           fi
