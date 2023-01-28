@@ -9,17 +9,14 @@ jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
-    - name: Get modified folders
-      id: modified_folders
+    - name: Check for changes in submodules
       run: |
-        modified_folders=$(git diff --name-only HEAD HEAD~1 modules/*)
-        if [ -n "$modified_folders" ]; then
-          echo "Modified folders: $modified_folders"
-          folder=$(echo "$modified_folders" | cut -d/ -f2)
-          echo "folder: $folder"
-        else
-          echo "No files were modified"
-        fi
+        for dir in $(ls -d terraform-aws-privatemodule/modules/*); do
+          if [[ -n $(git diff --name-only HEAD $dir) ]]; then
+            echo "Changes detected in submodule: $dir"
+            exit 0
+          fi
+        done
     # - name: Set prefix
     #   run: |
     #     prefix=""
