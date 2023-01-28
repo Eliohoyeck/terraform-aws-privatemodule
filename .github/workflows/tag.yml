@@ -14,12 +14,8 @@ jobs:
         fetch-depth: '0'
     - name: Check for changes in submodules
       run: |
-        for dir in $(ls -d modules/*); do
-          if [[ -n $(git diff --name-only HEAD $dir) ]]; then
-            echo "Changes detected in submodule: $dir"
-            exit 0
-          fi
-        done
+        cd modules
+        ls -d
         
     # - name: Set prefix
     #   run: |
