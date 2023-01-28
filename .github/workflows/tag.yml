@@ -9,15 +9,17 @@ jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
-    - name: Get modified folder path
+    - name: Get modified folders
+      id: modified_folders
       run: |
-        modified_paths=$(echo ${{github.event.head_commit.modified}} | jq '.[]')
-        for path in $modified_paths; do
-          if [[ $path == modules/** ]]; then
-            echo "Modified folder path: $path"
-            break
-          fi
-        done
+        modified_folders=$(git diff --name-only HEAD HEAD~1 terraform/modules/eks terraform/modules/azure)
+        if [ -n "$modified_folders" ]; then
+          echo "Modified folders: $modified_folders"
+          folder=$(echo "$modified_folders" | cut -d/ -f3)
+          echo "folder: $folder"
+        else
+          echo "No files were modified"
+        fi
     # - name: Set prefix
     #   run: |
     #     prefix=""
