@@ -11,9 +11,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-        fetch-depth: '0'
+        fetch-depth: '0'  
     - name: Check for changes in submodules
       run: |
+        matty=git diff --name-only HEAD modules/eks
+        echo $matty
         for dir in $(ls modules); do
           if [[ -n $(git diff --name-only HEAD modules/$dir) ]]; then
             echo "Changes detected in submodule: $dir"
