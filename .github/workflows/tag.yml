@@ -11,7 +11,7 @@ jobs:
     steps:
     - name: Check for changes in submodules
       run: |
-        for dir in $(ls -d terraform-aws-privatemodule/modules); do
+        for dir in $(ls -d ~/modules); do
           if [[ -n $(git diff --name-only HEAD $dir) ]]; then
             echo "Changes detected in submodule: $dir"
             exit 0
