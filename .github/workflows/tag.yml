@@ -38,6 +38,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         TAG_PREFIX: 'v'
+        BRANCH_HISTORY: 'last'
     # - name: Create custom tag
     #   shell: bash
     #   run: |
