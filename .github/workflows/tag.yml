@@ -11,9 +11,9 @@ jobs:
     steps:
     - name: Check for changes in submodules
       run: |
-        directory = ls
+        directory=$(ls -d */)
         echo $directory
-
+        
     # - name: Set prefix
     #   run: |
     #     prefix=""
