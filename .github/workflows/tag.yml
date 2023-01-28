@@ -11,12 +11,7 @@ jobs:
     steps:
     - name: Check for changes in submodules
       run: |
-        directories=$(find modules/ -type d)
-        for dir in $directories; do
-          if git diff --name-only HEAD~1...HEAD | grep -q $dir; then
-            echo "$dir has been modified"
-          fi
-        done
+        ls
         
     # - name: Set prefix
     #   run: |
