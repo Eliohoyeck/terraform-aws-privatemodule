@@ -9,15 +9,15 @@ jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
-    # - name: Get modified folder path
-    #   run: |
-    #     modified_paths=$(echo ${{github.event.head_commit.modified}} | jq '.[]')
-    #     for path in $modified_paths; do
-    #       if [[ $path == modules/* ]]; then
-    #         echo "Modified folder path: $path"
-    #         break
-    #       fi
-    #     done
+    - name: Get modified folder path
+      run: |
+        modified_paths=$(echo ${{github.event.head_commit.modified}} | jq '.[]')
+        for path in $modified_paths; do
+          if [[ $path == modules/** ]]; then
+            echo "Modified folder path: $path"
+            break
+          fi
+        done
     # - name: Set prefix
     #   run: |
     #     prefix=""
