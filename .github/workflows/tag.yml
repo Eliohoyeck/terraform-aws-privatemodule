@@ -12,10 +12,10 @@ jobs:
     - name: Get modified folders
       id: modified_folders
       run: |
-        modified_folders=$(git diff --name-only HEAD HEAD~1 terraform/modules/eks terraform/modules/azure)
+        modified_folders=$(git diff --name-only HEAD HEAD~1 modules/*)
         if [ -n "$modified_folders" ]; then
           echo "Modified folders: $modified_folders"
-          folder=$(echo "$modified_folders" | cut -d/ -f3)
+          folder=$(echo "$modified_folders" | cut -d/ -f2)
           echo "folder: $folder"
         else
           echo "No files were modified"
