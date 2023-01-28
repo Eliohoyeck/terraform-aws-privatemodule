@@ -11,6 +11,7 @@ jobs:
     steps:
     - name: Check for changes in submodules
       run: |
+        cd ~
         cd terraform-aws-privatemodule/modules
         matty=$(ls -d)
         echo $matty
