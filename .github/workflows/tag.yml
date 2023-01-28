@@ -14,10 +14,8 @@ jobs:
         fetch-depth: '0'  
     - name: Check for changes in submodules
       run: |
-        matty=$(git diff --name-only HEAD modules/eks/main.tf)
-        echo $matty
-        for dir in $(ls modules); do
-          if [[ -n $(git diff --name-only HEAD modules/$dir) ]]; then
+        for dir in modules/*; do
+          if [[ -n $(git diff --name-only HEAD -- "$dir") ]]; then
             echo "Changes detected in submodule: $dir"
             exit 0
           fi
