@@ -15,11 +15,7 @@ jobs:
     - name: Check for changes in submodules
       run: |
         for dir in modules/**; do
-          echo $dir
-          commit=$(git rev-parse HEAD)
-          echo "this is the commit: $commit"
-          echo $
-          if [[ -n $(git diff --name-only $commit -- "$dir") ]]; then
+          if [[ -n $git diff $GITHUB_SHA HEAD -- "$dir") ]]; then
             echo "Changes detected in submodule: $dir"
             exit 0
           fi
