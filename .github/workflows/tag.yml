@@ -37,7 +37,6 @@ jobs:
       uses: Eliohoyeck/github-tag-action-elio@master
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-        MAJOR_STRING_TOKEN: 'major'
         TAG_PREFIX: 'elio-'
     # - name: Create custom tag
     #   shell: bash
