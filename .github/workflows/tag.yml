@@ -45,9 +45,9 @@ jobs:
         
     - name: Append to markdown file
       run: |
-        printf "Hello, I'm <br></br> test" $USER >> myfile.md
-        printf "---------------------------<br></br>\n${{steps.bump-version.outputs.new_tag}}<br></br>\n ${{steps.bump-version.outputs.outputcommit}}<br></br>\n ${{steps.bump-version.outputs.outputauthor}}<br></br>\n---------------------------" >> myfile.md
-
+        printf -- "--------------------------- <br></br>"
+        printf -- "${{steps.bump-version.outputs.new_tag}}<br></br>\n ${{steps.bump-version.outputs.outputcommit}}<br></br>\n ${{steps.bump-version.outputs.outputauthor}}<br></br>" >> myfile.md
+        printf -- "--------------------------- <br></br>"
     - name: Commit changes
       run: |
         git config --local user.email "action@github.com"
