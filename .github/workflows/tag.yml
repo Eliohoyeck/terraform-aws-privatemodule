@@ -45,10 +45,11 @@ jobs:
         
     - name: Append to markdown file
       run: |
+        printf "\n" >> myfile.md
         echo -e "-------------------------------------------------------------" >> myfile.md
-        printf -- "${{steps.bump-version.outputs.outputauthor}}<br></br>\n [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/${{steps.bump-version.outputs.outputcommit}})<br></br>\n ${{steps.bump-version.outputs.new_tag}}<br></br>\n" >> myfile.md
+        printf "\n" >> myfile.md
+        printf -- "${{steps.bump-version.outputs.outputauthor}}<br></br>\n [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/${{steps.bump-version.outputs.outputcommit}})<br></br>\n ${{steps.bump-version.outputs.new_tag}}<br></br>\n" >> myfile.md
         printf "<br></br>" >> myfile.md
-
 
     - name: Commit changes
       run: |
