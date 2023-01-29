@@ -45,7 +45,7 @@ jobs:
         
     - name: Append to markdown file
       run: |
-        printf "Hello, I'm %s.\n <br></br>" $USER >> myfile.md
+        printf "Hello, I'm" <br></br> $USER >> myfile.md
 
     - name: Commit changes
       run: |
