@@ -26,17 +26,12 @@ jobs:
         done
         echo prefix=$pre >> $GITHUB_OUTPUT
         
-    - name: Set prefix
-      run: |
-        echo ${{steps.submodules_changes.outputs.prefix}}
-        
-
     - name: Bump version and push tag
       id: bump-version
       uses: Eliohoyeck/github-tag-action-elio@master
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-    #    TAG_PREFIX: $prefix
+        TAG_PREFIX: ${{steps.submodules_changes.outputs.prefix}}
         BRANCH_HISTORY: 'last'
     # - name: Create custom tag
     #   shell: bash
