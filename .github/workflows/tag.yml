@@ -35,6 +35,12 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         TAG_PREFIX: ${{steps.submodules_changes.outputs.prefix}}
         BRANCH_HISTORY: 'last'
+
+    - name: test1
+      id: testing
+      run: |
+        echo ${{steps.bump-version.outputs.*}}
+        
     # - name: Create custom tag
     #   shell: bash
     #   run: |
