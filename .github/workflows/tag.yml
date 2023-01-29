@@ -39,8 +39,8 @@ jobs:
     - name: test1
       id: testing
       run: |
-        echo ${{steps.bump-version.outputs.*}}
-        
+        echo ${{join(steps.bump-version.outputs.*, '\n')}}
+       
     # - name: Create custom tag
     #   shell: bash
     #   run: |
