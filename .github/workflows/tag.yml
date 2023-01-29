@@ -15,7 +15,6 @@ jobs:
     - name: Check for changes in submodules
       run: |
         for dir in modules/**; do
-          echo $dir
           if [[ -n $(git diff HEAD~1 -- $dir) ]]; then
             echo "Changes detected in submodule: $dir"
           fi
