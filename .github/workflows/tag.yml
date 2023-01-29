@@ -39,7 +39,9 @@ jobs:
     - name: test1
       id: testing
       run: |
-        echo ${{join(steps.bump-version.outputs.*, '\n')}}
+        echo ${{steps.bump-version.outputs.new_tag}}
+        echo ${{steps.bump-version.outputs.outputcommit}}
+        echo ${{steps.bump-version.outputs.outputauthor}}
        
     # - name: Create custom tag
     #   shell: bash
