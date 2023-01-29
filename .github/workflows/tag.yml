@@ -19,7 +19,8 @@ jobs:
           if [[ -n $(git diff HEAD~1 -- $dir) ]]; then
             echo "Changes detected in submodule: $dir"
             splitDir=$(echo $dir | cut -d "/" -f 2)
-            echo $splitDir
+            echo $splitDir        
+            prefix+=$splitDir
           fi
         done
         echo "Tag prefix: $prefix"
@@ -41,7 +42,7 @@ jobs:
       uses: Eliohoyeck/github-tag-action-elio@master
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-        TAG_PREFIX: $prefix
+    #    TAG_PREFIX: $prefix
         BRANCH_HISTORY: 'last'
     # - name: Create custom tag
     #   shell: bash
