@@ -45,12 +45,14 @@ jobs:
         
     - name: Append to markdown file
       run: |
-        printf "\n" >> myfile.md
-        echo -e "-------------------------------------------------------------" >> myfile.md
-        printf "\n" >> myfile.md
-        printf -- "${{steps.bump-version.outputs.outputauthor}}<br></br>\n [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/${{steps.bump-version.outputs.outputcommit}})<br></br>\n ${{steps.bump-version.outputs.new_tag}}<br></br>\n" >> myfile.md
-        printf "\n" >> myfile.md
-
+        printf "\n" >> temp.md
+        echo -e "-------------------------------------------------------------" >> temp.md
+        printf "\n" >> temp.md
+        printf -- "${{steps.bump-version.outputs.outputauthor}}<br></br>\n [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/${{steps.bump-version.outputs.outputcommit}})<br></br>\n ${{steps.bump-version.outputs.new_tag}}<br></br>\n" >> temp.md
+        printf "\n" >> temp.md
+        cat temp.md myfile.md > myfile.md
+        rm temp.md
+        
     - name: Commit changes
       run: |
         git config --local user.email "action@github.com"
