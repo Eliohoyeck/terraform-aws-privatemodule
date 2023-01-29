@@ -13,7 +13,7 @@ jobs:
       with:
         fetch-depth: '0'  
     - name: Check for changes in submodules
-    - id: submodules_changes
+      id: submodules_changes
       run: |
         prefix="v"
         for dir in modules/**; do
