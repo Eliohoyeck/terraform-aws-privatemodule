@@ -18,7 +18,7 @@ jobs:
         for dir in modules/**; do
           if [[ -n $(git diff HEAD~1 -- $dir) ]]; then
             echo "Changes detected in submodule: $dir"
-            splitDir=$dir | cut -d'/' -f3
+            splitDir=$($dir | cut -d'/' -f3)
             prefix+=$splitDir
           fi
         done
