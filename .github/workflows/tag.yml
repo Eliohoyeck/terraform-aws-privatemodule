@@ -45,10 +45,6 @@ jobs:
         
     - name: Append to markdown file
       run: |
-    - name: Append to markdown file
-      run: |
-    - name: Append to markdown file
-      run: |
         echo -e "${{steps.bump-version.outputs.new_tag}} \n ${{steps.bump-version.outputs.outputcommit}} \n ${{steps.bump-version.outputs.outputauthor}}" >> myfile.md
         sed -i '1!G;h;$!d' myfile.md
 
