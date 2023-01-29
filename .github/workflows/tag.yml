@@ -45,9 +45,14 @@ jobs:
         
     - name: Append to markdown file
       run: |
-        echo ${{steps.bump-version.outputs.new_tag}} | tee -a myfile.md
-        echo ${{steps.bump-version.outputs.outputcommit}} | tee -a myfile.md
-        echo ${{steps.bump-version.outputs.outputauthor}} | tee -a myfile.md 
+    - name: Append to markdown file
+      run: |
+        printf -- "-------------------------------------------------------------" >> myfile.md
+        printf -- "\nvalue of new_tag: ${{steps.bump-version.outputs.new_tag}}" >> myfile.md
+        printf -- "\nvalue of outputcommit: ${{steps.bump-version.outputs.outputcommit}}" >> myfile.md
+        printf -- "\nvalue of outputauthor: ${{steps.bump-version.outputs.outputauthor}}" >> myfile.md
+        printf -- "\n-------------------------------------------------------------" >> myfile.md
+        sed -i '1!G;h;$!d' myfile.md
 
     - name: Commit changes
       run: |
