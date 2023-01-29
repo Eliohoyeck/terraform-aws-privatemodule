@@ -2,6 +2,13 @@
 -------------------------------------------------------------
 
 Author: Elio Hoyeck <br></br>
+ [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/9856eaffe08128598f31c3874207ac974878ee1b)<br></br>
+ aks-1.2.1<br></br>
+
+
+-------------------------------------------------------------
+
+Author: Elio Hoyeck <br></br>
  [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/c4718cf66742ce8a6400ba71a353e5bf8dd4930b)<br></br>
  aks-1.2.0<br></br>
 
