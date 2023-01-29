@@ -28,7 +28,7 @@ jobs:
         
     - name: Set prefix
       run: |
-        echo steps.run_tests.outputs
+        echo steps.submodules_changes.outputs
         
 
     - name: Bump version and push tag
