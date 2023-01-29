@@ -50,9 +50,7 @@ jobs:
     - name: Append to markdown file
       run: |
         echo -e "-------------------------------------------------------------" >> myfile.md
-        echo -e "${{steps.bump-version.outputs.new_tag}}" >> myfile.md
-        echo -e "${{steps.bump-version.outputs.outputcommit}}" >> myfile.md
-        echo -e "${{steps.bump-version.outputs.outputauthor}}" >> myfile.md
+        echo -e "${{steps.bump-version.outputs.new_tag}} \n ${{steps.bump-version.outputs.outputcommit}} \n ${{steps.bump-version.outputs.outputauthor}}" >> myfile.md
         echo -e "-------------------------------------------------------------" >> myfile.md
         sed -i '1!G;h;$!d' myfile.md
 
