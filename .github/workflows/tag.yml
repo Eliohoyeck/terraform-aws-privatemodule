@@ -22,9 +22,11 @@ jobs:
             splitDir=$(echo $dir | cut -d "/" -f 2)
             echo $splitDir        
             pre+=$splitDir
+            pre+="-"
           fi
         done
         echo prefix=$pre >> $GITHUB_OUTPUT
+        echo "this is the new value for pre: $pre"
         
     - name: Bump version and push tag
       id: bump-version
