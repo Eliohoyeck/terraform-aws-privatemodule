@@ -16,15 +16,10 @@ jobs:
       run: |
         for dir in modules/**; do
           echo $dir
-          echo $GITHUB_SHA
-          commit=$(git rev-parse HEAD)
-          prevCommit=$(git rev-parse HEAD~1)
-          echo "this is the commit: $commit"
-          echo "this is the prev commit: $prevCommit"
-            if [[ -n $(git diff HEAD~1 -- $dir) ]]; then
-              echo "Changes detected in submodule: $dir"
-              exit 0
-            fi
+          if [[ -n $(git diff HEAD~1 -- $dir) ]]; then
+            echo "Changes detected in submodule: $dir"
+            exit 0
+          fi
         done
         
     # - name: Set prefix
