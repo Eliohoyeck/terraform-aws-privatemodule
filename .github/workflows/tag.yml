@@ -14,11 +14,14 @@ jobs:
         fetch-depth: '0'  
     - name: Check for changes in submodules
       run: |
+        prefix=""
         for dir in modules/**; do
           if [[ -n $(git diff HEAD~1 -- $dir) ]]; then
             echo "Changes detected in submodule: $dir"
+            prefix += $dir
           fi
         done
+        echo "Tag prefix: $prefix"
         
     # - name: Set prefix
     #   run: |
