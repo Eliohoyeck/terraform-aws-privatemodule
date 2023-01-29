@@ -15,6 +15,7 @@ jobs:
     - name: Check for changes in submodules
       run: |
         for dir in modules/**; do
+        echo $dir
         echo $GITHUB_SHA
         commit=$(git rev-parse HEAD)
         prevCommit=$(git rev-parse HEAD~1)
