@@ -13,6 +13,7 @@ jobs:
       with:
         fetch-depth: '0'  
     - name: Check for changes in submodules
+    - id: submodules_changes
       run: |
         prefix="v"
         for dir in modules/**; do
@@ -23,18 +24,11 @@ jobs:
             prefix+=$splitDir
           fi
         done
-        echo "Tag prefix: $prefix"
+        echo $prefix >> $GITHUB_OUTPUT
         
-    # - name: Set prefix
-    #   run: |
-    #     prefix=""
-    #     for path in ${{github.event.head_commit.modified}}; do
-    #       if [[ $path == modules/* ]]; then
-    #         prefix=$(echo $path | cut -d'/' -f3)
-    #         break
-    #       fi
-    #     done
-    #     echo "Tag prefix: $prefix"
+    - name: Set prefix
+      run: |
+        echo steps.run_tests.outputs
         
 
     - name: Bump version and push tag
