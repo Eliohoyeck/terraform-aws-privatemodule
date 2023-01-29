@@ -42,6 +42,12 @@ jobs:
         echo ${{steps.bump-version.outputs.new_tag}}
         echo ${{steps.bump-version.outputs.outputcommit}}
         echo ${{steps.bump-version.outputs.outputauthor}}
+        
+    - name: Append to markdown file
+      run: |
+        echo ${{steps.bump-version.outputs.new_tag}} | tee -a myfile.md
+        echo ${{steps.bump-version.outputs.outputcommit}} | tee -a myfile.md
+        echo ${{steps.bump-version.outputs.outputauthor}} | tee -a myfile.md        
        
     # - name: Create custom tag
     #   shell: bash
