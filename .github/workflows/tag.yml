@@ -47,7 +47,16 @@ jobs:
       run: |
         echo ${{steps.bump-version.outputs.new_tag}} | tee -a myfile.md
         echo ${{steps.bump-version.outputs.outputcommit}} | tee -a myfile.md
-        echo ${{steps.bump-version.outputs.outputauthor}} | tee -a myfile.md        
+        echo ${{steps.bump-version.outputs.outputauthor}} | tee -a myfile.md 
+
+    - name: Commit changes
+      run: |
+        git add myfile.md
+        git commit -m "Append outputs to myfile.md"
+    - name: Push changes
+      uses: ad-m/github-push-action@v2
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
        
     # - name: Create custom tag
     #   shell: bash
