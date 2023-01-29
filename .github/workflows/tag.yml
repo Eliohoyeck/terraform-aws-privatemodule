@@ -18,7 +18,7 @@ jobs:
         for dir in modules/**; do
           if [[ -n $(git diff HEAD~1 -- $dir) ]]; then
             echo "Changes detected in submodule: $dir"
-            $prefix+=$dir
+            prefix+=$dir
           fi
         done
         echo "Tag prefix: $prefix"
