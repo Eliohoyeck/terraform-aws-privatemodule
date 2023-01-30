@@ -19,7 +19,7 @@ jobs:
         for dir in terraform/modules/**; do
           if [[ -n $(git diff HEAD~1 -- $dir) ]]; then
             echo "Changes detected in submodule: $dir"
-            splitDir=$(echo $dir | awk -F/ '{print $NF}')
+            splitDir=$(echo $dir | awk -F/ '{print $(NF-1)}')
             echo $splitDir        
             pre+=$splitDir
             pre+="-"
