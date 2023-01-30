@@ -60,9 +60,17 @@ jobs:
         git push origin :refs/tags/${{steps.bump-version.outputs.new_tag}}  
         
     - name: Commit changes
+      if: success()    
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action Bot"  
         git add myfile.md
         git commit -m "Append outputs to myfile.md"
         git push
+
+
+    - name: Delete tag   # this job only runs if the previous job failed, in this case it will delete the previously creted tag in case of error
+      if: failure()
+      run: |
+        git tag -d ${{steps.bump-version.outputs.new_tag}}
+        git push origin :refs/tags/${{steps.bump-version.outputs.new_tag}}          
