@@ -50,8 +50,8 @@ jobs:
         printf "\n" >> temp.md
         printf -- "${{steps.bump-version.outputs.outputauthor}}<br></br>\n [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/${{steps.bump-version.outputs.outputcommit}})<br></br>\n ${{steps.bump-version.outputs.new_tag}}<br></br>\n" >> temp.md
         printf "\n" >> temp.md
-        cat temp.md myfile.md > mynewfile.md
-        mv mynewfile.md myfile.md
+        cat temp.md modules-versions.md > mynewfile.md
+        mv mynewfile.md modules-versions.md
         
     - name: Commit changes
       run: |
