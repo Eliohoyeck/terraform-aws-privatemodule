@@ -12,70 +12,11 @@ jobs:
     - uses: actions/checkout@v3
       with:
         fetch-depth: '0'  
-    - name: Check for changes in submodules
-      id: submodules_changes
-      run: |
-        pre=""
-        for dir in terraform/modules/*/**; do
-          if [[ -n $(git diff HEAD~1 -- $dir) ]]; then
-            echo "Changes detected in submodule: $dir"
-            splitDir=$(echo $dir | cut -d "/" -f 4)
-            echo $splitDir        
-            pre+=$splitDir
-            pre+="-"
-          fi
-        done
-        echo prefix=$pre >> $GITHUB_OUTPUT
-        echo "this is the new value for pre: $pre"
         
     - name: Bump version and push tag
       id: bump-version
       uses: Eliohoyeck/github-tag-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-        TAG_PREFIX: ${{steps.submodules_changes.outputs.prefix}}
         BRANCH_HISTORY: 'last'
-
-    - name: Markdown outputs
-      id: markdown_outputs
-      run: |
-        echo ${{steps.bump-version.outputs.new_tag}}
-        echo ${{steps.bump-version.outputs.outputcommit}}
-        echo ${{steps.bump-version.outputs.outputdate}}
-        echo ${{steps.bump-version.outputs.outputauthor}}
         
-    - name: Append to markdown file
-      if: success()
-      run: |
-        printf "\n" >> temp.md
-        echo -e "-------------------------------------------------------------" >> temp.md
-        printf "\n" >> temp.md
-        printf -- "${{steps.bump-version.outputs.outputauthor}}<br></br>\n [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/${{steps.bump-version.outputs.outputcommit}})\t ${{steps.bump-version.outputs.outputdate}}<br></br>\n ${{steps.bump-version.outputs.new_tag}}<br></br>\n" >> temp.md
-        printf "\n" >> temp.md
-        cat temp.md modules-versions.md > mynewfile.md
-        mv mynewfile.md modules-versions.md
-
-    - name: Delete tag on fail markdown  # this job only runs if the previous job failed, in this case it will delete the previously creted tag in case of error
-      if: failure()
-      run: |
-        git tag -d ${{steps.bump-version.outputs.new_tag}}
-        git push origin :refs/tags/${{steps.bump-version.outputs.new_tag}}  
-        
-    - name: Commit changes
-      if: always()
-      id: commit_changes
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action Bot"  
-        git add modules-versions.md
-        git commit -m "Append outputs to modules-versions.md"
-        git push
-              
-    - name: Delete tag on fail commit # this step will only get triggered if a tag exists and if commit_changes fails
-      if: failure()
-      id: delete_if_fail_commit
-      run: |
-        if [[ $(git tag -l ${{steps.bump-version.outputs.new_tag}}) ]]; then
-          git tag -d ${{steps.bump-version.outputs.new_tag}}
-          git push origin :refs/tags/${{steps.bump-version.outputs.new_tag}}  
-        fi    
