@@ -51,8 +51,8 @@ jobs:
         printf "\n" >> temp.md
         printf -- "${{steps.bump-version.outputs.outputauthor}}<br></br>\n [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/${{steps.bump-version.outputs.outputcommit}})<br></br>\n ${{steps.bump-version.outputs.new_tag}}<br></br>\n" >> temp.md
         printf "\n" >> temp.md
-        cat temp.md module-versions.md > mynewfile.md
-        mv mynewfile.md module-versions.md
+        cat temp.md modules-versions.md > mynewfile.md
+        mv mynewfile.md modules-versions.md
 
     - name: Delete tag   # this job only runs if the previous job failed, in this case it will delete the previously creted tag in case of error
       if: failure()
@@ -66,7 +66,7 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action Bot"  
-        git add modules-versions.md
+        git add modules-version.md
         git commit -m "Append outputs to modules-versions.md"
         git push
               
