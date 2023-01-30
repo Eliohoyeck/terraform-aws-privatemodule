@@ -30,7 +30,7 @@ jobs:
         
     - name: Bump version and push tag
       id: bump-version
-      uses: Eliohoyeck/github-tag-action-elio@master
+      uses: Eliohoyeck/github-tag-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         TAG_PREFIX: ${{steps.submodules_changes.outputs.prefix}}
@@ -60,13 +60,3 @@ jobs:
         git add myfile.md
         git commit -m "Append outputs to myfile.md"
         git push
-       
-    # - name: Create custom tag
-    #   shell: bash
-    #   run: |
-    #     tag=$prefix-${{ steps.bump_version_and_push_tag.outputs.tag }}
-    #     echo "Custom tag: $new_tag"
-    #   env:
-    #     CUSTOM_TAG: $new_tag
-    # - name: Create new tag
-    #   run: git tag env.CUSTOM_TAG
