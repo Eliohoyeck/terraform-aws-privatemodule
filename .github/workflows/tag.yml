@@ -76,4 +76,7 @@ jobs:
       run: |
         git tag -d ${{steps.bump-version.outputs.new_tag}}
         git push origin :refs/tags/${{steps.bump-version.outputs.new_tag}}  
-        if: steps.commit_changes.outputs.exit_code != 0
+        on:
+          failure:
+            steps:
+              - commit_changes
