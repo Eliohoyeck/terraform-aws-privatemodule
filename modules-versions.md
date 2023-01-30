@@ -2,6 +2,13 @@
 -------------------------------------------------------------
 
 Author: Elio Hoyeck <br></br>
+ [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/a2ebd79ca1d0ab35bef9a73d0a22b2de830bca9d)<br></br>
+ auto-unseal-engine-vault-external-0.1.0<br></br>
+
+
+-------------------------------------------------------------
+
+Author: Elio Hoyeck <br></br>
  [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/c5766c0f4d0e18f4fbf693d98c991fd8ed231fd3)<br></br>
  aks-1.3.0<br></br>
 
