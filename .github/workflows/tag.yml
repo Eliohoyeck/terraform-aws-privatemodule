@@ -16,7 +16,7 @@ jobs:
       id: submodules_changes
       run: |
         pre=""
-        for dir in terraform/modules/**; do
+        for dir in terraform/modules/*/**; do
           if [[ -n $(git diff HEAD~1 -- $dir) ]]; then
             echo "Changes detected in submodule: $dir"
             splitDir=$(echo $dir | awk -F "/" '{print $4}')
