@@ -41,6 +41,7 @@ jobs:
       run: |
         echo ${{steps.bump-version.outputs.new_tag}}
         echo ${{steps.bump-version.outputs.outputcommit}}
+        echo ${{steps.bump-version.outputs.outputdate}}
         echo ${{steps.bump-version.outputs.outputauthor}}
         
     - name: Append to markdown file
@@ -49,7 +50,7 @@ jobs:
         printf "\n" >> temp.md
         echo -e "-------------------------------------------------------------" >> temp.md
         printf "\n" >> temp.md
-        printf -- "${{steps.bump-version.outputs.outputauthor}}<br></br>\n [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/${{steps.bump-version.outputs.outputcommit}})<br></br>\n ${{steps.bump-version.outputs.new_tag}}<br></br>\n" >> temp.md
+        printf -- "${{steps.bump-version.outputs.outputauthor}}<br></br>\n [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/${{steps.bump-version.outputs.outputcommit}})\t ${{steps.bump-version.outputs.outputdate}}<br></br>\n ${{steps.bump-version.outputs.new_tag}}<br></br>\n" >> temp.md
         printf "\n" >> temp.md
         cat temp.md modules-versions.md > mynewfile.md
         mv mynewfile.md modules-versions.md
