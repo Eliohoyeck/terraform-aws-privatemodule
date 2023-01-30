@@ -4,7 +4,7 @@ on:
     branches:
       - main
     paths:
-      - 'modules/**'
+      - 'terraform/modules/**'
 jobs:
   build:
     runs-on: ubuntu-22.04
