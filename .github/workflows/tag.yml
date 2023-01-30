@@ -36,8 +36,8 @@ jobs:
         TAG_PREFIX: ${{steps.submodules_changes.outputs.prefix}}
         BRANCH_HISTORY: 'last'
 
-    - name: test1
-      id: testing
+    - name: Markdown outputs
+      id: markdown_outputs
       run: |
         echo ${{steps.bump-version.outputs.new_tag}}
         echo ${{steps.bump-version.outputs.outputcommit}}
@@ -70,12 +70,11 @@ jobs:
         git commit -m "Append outputs to modules-versions.md"
         git push
               
-    - name: Delete tag on commit 
+    - name: Delete tag on commit # this step will only get triggered if a tag exists and if commit_changes fails
       if: failure()
       id: delete_if_fail_commit
       run: |
         if [[ $(git tag -l ${{steps.bump-version.outputs.new_tag}}) ]]; then
           git tag -d ${{steps.bump-version.outputs.new_tag}}
           git push origin :refs/tags/${{steps.bump-version.outputs.new_tag}}  
-        fi
-        
+        fi    
