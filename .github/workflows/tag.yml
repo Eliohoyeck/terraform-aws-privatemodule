@@ -54,7 +54,7 @@ jobs:
         cat temp.md modules-versions.md > mynewfile.md
         mv mynewfile.md modules-versions.md
 
-    - name: Delete tag   # this job only runs if the previous job failed, in this case it will delete the previously creted tag in case of error
+    - name: Delete tag on fail markdown  # this job only runs if the previous job failed, in this case it will delete the previously creted tag in case of error
       if: failure()
       run: |
         git tag -d ${{steps.bump-version.outputs.new_tag}}
@@ -70,7 +70,7 @@ jobs:
         git commit -m "Append outputs to modules-versions.md"
         git push
               
-    - name: Delete tag on commit # this step will only get triggered if a tag exists and if commit_changes fails
+    - name: Delete tag on fail commit # this step will only get triggered if a tag exists and if commit_changes fails
       if: failure()
       id: delete_if_fail_commit
       run: |
