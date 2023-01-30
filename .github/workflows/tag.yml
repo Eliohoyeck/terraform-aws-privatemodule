@@ -61,6 +61,7 @@ jobs:
         git push origin :refs/tags/${{steps.bump-version.outputs.new_tag}}  
         
     - name: Commit changes
+      if: success()
       id: commit_changes
       run: |
         git config --local user.email "action@github.com"
@@ -71,7 +72,8 @@ jobs:
                 
 
 
-    - name: Delete tag   # this job only runs if the previous job failed, in this case it will delete the previously creted tag in case of error
+    - name: Delete tag on commit # this job only runs if the previous job failed, in this case it will delete the previously creted tag in case of error
+      id: delete_if_fail_commit
       run: |
         git tag -d ${{steps.bump-version.outputs.new_tag}}
         git push origin :refs/tags/${{steps.bump-version.outputs.new_tag}}  
