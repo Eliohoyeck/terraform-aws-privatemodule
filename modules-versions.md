@@ -2,6 +2,13 @@
 -------------------------------------------------------------
 
 Author: Elio Hoyeck  <br></br>
+ [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/f6b56f1e533581cf4c2f986a0ed4321b494b2d02)	 2023-01-30 <br></br>
+ auto-unseal0.1.0 <br></br>
+
+
+-------------------------------------------------------------
+
+Author: Elio Hoyeck  <br></br>
  [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/848cd6e7e1789ef3d7b7b4685b13afe88e71b980)	 2023-01-30 <br></br>
  vault-external0.1.0 <br></br>
 
