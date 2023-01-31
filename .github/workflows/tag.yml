@@ -19,4 +19,5 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         BRANCH_HISTORY: 'last'
+        MODULES_PATH: 'terraform/modules/*/**'
         
