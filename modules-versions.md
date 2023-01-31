@@ -2,6 +2,27 @@
 -------------------------------------------------------------
 
 Author: Elio Hoyeck  <br></br>
+ [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/0bcb93756f17556def77fe64fe6e3009ece44e26)	 2023-01-31 <br></br>
+ auto-unseal-engine-s3-seal-0.0.1 <br></br>
+
+
+-------------------------------------------------------------
+
+Author: Elio Hoyeck  <br></br>
+ [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/0bcb93756f17556def77fe64fe6e3009ece44e26)	 2023-01-31 <br></br>
+ auto-unseal-engine-0.0.1 <br></br>
+
+
+-------------------------------------------------------------
+
+Author: Elio Hoyeck  <br></br>
+ [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/0bcb93756f17556def77fe64fe6e3009ece44e26)	 2023-01-31 <br></br>
+ auto-unseal-0.6.1 <br></br>
+
+
+-------------------------------------------------------------
+
+Author: Elio Hoyeck  <br></br>
  [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/00246dc569f8c152a03cfd99e6058ab5ab034407)	 2023-01-31 <br></br>
  s3-engine2.0.0 <br></br>
 
