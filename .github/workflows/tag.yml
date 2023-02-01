@@ -20,4 +20,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         BRANCH_HISTORY: 'last'
         MODULES_PATH: 'terraform/modules/*/**'
-        MINOR_STRING_TOKEN: 'elio'
+        MAJOR_STRING_TOKEN: 'elio'
