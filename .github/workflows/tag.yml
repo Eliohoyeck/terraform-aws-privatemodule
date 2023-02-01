@@ -21,3 +21,4 @@ jobs:
         BRANCH_HISTORY: 'last'
         MODULES_PATH: 'terraform/modules/*/**'
         MAJOR_STRING_TOKEN: 'elio'
+        MINOR_STRING_TOKEN: 'elio'
