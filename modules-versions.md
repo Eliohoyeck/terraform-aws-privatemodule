@@ -2,6 +2,13 @@
 -------------------------------------------------------------
 
 Author: Elio Hoyeck  <br></br>
+ [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/21a353410043b1bd258e70224d0dad5f4b66ba07)	 2023-02-01 <br></br>
+ s3-seal-4.0.0 <br></br>
+
+
+-------------------------------------------------------------
+
+Author: Elio Hoyeck  <br></br>
  [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/47c28deed03798c29e70b5e6014996fc985db883)	 2023-02-01 <br></br>
  s3-seal-3.0.0 <br></br>
 
