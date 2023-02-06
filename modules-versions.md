@@ -2,6 +2,13 @@
 -------------------------------------------------------------
 
 Author: Elio Hoyeck  <br></br>
+ [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/c4661a3e802f658d9be92bac388070a86b653f78)	 2023-02-06 <br></br>
+ engine-0.5.0 <br></br>
+
+
+-------------------------------------------------------------
+
+Author: Elio Hoyeck  <br></br>
  [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/bfdc626ad9d51e78ddd72dc5428e6d27662bee8c)	 2023-02-06 <br></br>
  engine-0.4.0 <br></br>
 
