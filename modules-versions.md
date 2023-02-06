@@ -1,1 +1,15 @@
 
+-------------------------------------------------------------
+
+Author: Elio Hoyeck  <br></br>
+ [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/df6cc46c0d05aa847265901e3835c8c881e9f38c)	 2023-02-06 <br></br>
+ s3-engine-0.1.0 <br></br>
+
+
+-------------------------------------------------------------
+
+Author: Elio Hoyeck  <br></br>
+ [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/df6cc46c0d05aa847265901e3835c8c881e9f38c)	 2023-02-06 <br></br>
+ vault-external-0.1.0 <br></br>
+
+
