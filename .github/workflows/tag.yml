@@ -19,7 +19,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         #BRANCH_HISTORY: 'last'
-        MODULES_PATH: 'terraform/modules/*/*/**'
+        MODULES_PATH: 'terraform/modules/*/**'
         #MAJOR_STRING_TOKEN: 'major'
         #MINOR_STRING_TOKEN: 'minor'
         #PATCH_STRING_TOKEN: 'patch'
