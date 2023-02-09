@@ -2,6 +2,69 @@
 -------------------------------------------------------------
 
 Author: Elio Hoyeck  <br></br>
+ [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/51cede1c84d10780b0d2d8b97bffd2e6a1888c35)	 2023-02-09 <br></br>
+ vault-external-variables.tf-0.1.0 <br></br>
+
+
+-------------------------------------------------------------
+
+Author: Elio Hoyeck  <br></br>
+ [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/51cede1c84d10780b0d2d8b97bffd2e6a1888c35)	 2023-02-09 <br></br>
+ vault-external-providers.tf-0.1.0 <br></br>
+
+
+-------------------------------------------------------------
+
+Author: Elio Hoyeck  <br></br>
+ [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/51cede1c84d10780b0d2d8b97bffd2e6a1888c35)	 2023-02-09 <br></br>
+ vault-external-outputs.tf-0.1.0 <br></br>
+
+
+-------------------------------------------------------------
+
+Author: Elio Hoyeck  <br></br>
+ [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/51cede1c84d10780b0d2d8b97bffd2e6a1888c35)	 2023-02-09 <br></br>
+ vault-external-main.tf-0.1.0 <br></br>
+
+
+-------------------------------------------------------------
+
+Author: Elio Hoyeck  <br></br>
+ [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/51cede1c84d10780b0d2d8b97bffd2e6a1888c35)	 2023-02-09 <br></br>
+ internal-variables.tf-0.1.0 <br></br>
+
+
+-------------------------------------------------------------
+
+Author: Elio Hoyeck  <br></br>
+ [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/51cede1c84d10780b0d2d8b97bffd2e6a1888c35)	 2023-02-09 <br></br>
+ internal-providers.tf-0.1.0 <br></br>
+
+
+-------------------------------------------------------------
+
+Author: Elio Hoyeck  <br></br>
+ [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/51cede1c84d10780b0d2d8b97bffd2e6a1888c35)	 2023-02-09 <br></br>
+ internal-policies-0.1.0 <br></br>
+
+
+-------------------------------------------------------------
+
+Author: Elio Hoyeck  <br></br>
+ [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/51cede1c84d10780b0d2d8b97bffd2e6a1888c35)	 2023-02-09 <br></br>
+ internal-outputs.tf-0.1.0 <br></br>
+
+
+-------------------------------------------------------------
+
+Author: Elio Hoyeck  <br></br>
+ [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/51cede1c84d10780b0d2d8b97bffd2e6a1888c35)	 2023-02-09 <br></br>
+ internal-main.tf-0.1.0 <br></br>
+
+
+-------------------------------------------------------------
+
+Author: Elio Hoyeck  <br></br>
  [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/12b859980af8de81ecb69713179fd40198674315)	 2023-02-08 <br></br>
  main.tf-0.1.0 <br></br>
 
