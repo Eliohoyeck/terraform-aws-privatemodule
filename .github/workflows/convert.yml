@@ -1,0 +1,14 @@
+name: Convert Strings to JSON
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  convert-to-json:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Convert to JSON
+        run: |
+          python convert.sh
