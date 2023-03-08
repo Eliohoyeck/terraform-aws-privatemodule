@@ -30,4 +30,19 @@ jobs:
           git config --local user.email github-actions@github.com
           git add modules-versions.md
           git commit -m "Update changelog"
-          git push
+If you want to push the changes to a new branch and require approval before merging them into the protected branch, you can modify your script to create a new branch, push the changes to the new branch, and open a pull request to merge the changes into the protected branch.
+
+Here's an example script that does this:
+
+lua
+Copy code
+- name: Changelog
+  run: |
+    branch_suffix=$RANDOM
+    git config --local user.name github-actions
+    git config --local user.email github-actions@github.com
+    git checkout -b changelog-$branch_suffix
+    git add modules-versions.md
+    git commit -m "Update changelog"
+    git push --set-upstream origin changelog-$branch_suffix
+    gh pr create --title "Update changelog" --body "Please review and approve this changelog update." --base main --head changelog
