@@ -1,6 +1,13 @@
 
 -------------------------------------------------------------
 
+Author: Elio Hoyeck  <br></br>
+ [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/bee325611435b4f91ee4fb800586efdf3cf21d00)	 2023-03-08 <br></br>
+ eks-s3-seal-0.5.0 <br></br>
+
+
+-------------------------------------------------------------
+
 Author: Ionut Cadariu  <br></br>
  [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/3bbd6c9e12ca5c60409294c650bd4b2de9145751)	 2023-03-08 <br></br>
  aks-auto-unseal-2.0.0 <br></br>
