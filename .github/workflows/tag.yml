@@ -6,9 +6,13 @@ on:
       - master
     paths:
       - 'terraform/modules/**'
+      
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
+  
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-22.04   
     steps:
       - uses: actions/checkout@v3
         with:
