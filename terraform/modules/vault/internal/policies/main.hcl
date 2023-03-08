@@ -1,1 +1,1 @@
- # Apps need to be asd to encrypt data using tenant keysqweqweqweqweasd
+ # Apps need to be asd to encrypt qweda
