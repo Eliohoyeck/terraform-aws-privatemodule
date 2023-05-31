@@ -20,7 +20,7 @@ jobs:
 
       - name: Bump version and push tag
         id: bump-version
-        uses: Eliohoyeck/module-versioning-action@master
+        uses: Eliohoyeck/module-versioning-action@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MODULES_PATH: 'terraform/modules/*/**'
