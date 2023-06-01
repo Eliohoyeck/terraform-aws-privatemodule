@@ -2,6 +2,13 @@
 -------------------------------------------------------------
 
 Author: Elio Hoyeck  <br></br>
+ [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/6eb06a10e15b01801be1d64d7b0d25b96e4c2fdd)	 2023-06-01 <br></br>
+ eks-s3-engine-1.3.0 <br></br>
+
+
+-------------------------------------------------------------
+
+Author: Elio Hoyeck  <br></br>
  [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/f20b7514e5685e0547e27d8ab9d3db9c9ffe83c5)	 2023-06-01 <br></br>
  vault-internal-1.0.0 <br></br>
 
