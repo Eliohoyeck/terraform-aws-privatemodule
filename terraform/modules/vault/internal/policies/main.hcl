@@ -1,1 +1,1 @@
- # Apps need to be asd to encrypt qwedaxzc policy
+ # Apps need to be asd to encrypt qwedax
