@@ -2,6 +2,13 @@
 -------------------------------------------------------------
 
 Author: Ionut Cadariu  <br></br>
+ [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/33bfb167bb8973623a18b3371a6e114af350fed4)	 2023-06-01 <br></br>
+ vault-internal-1.2.0 <br></br>
+
+
+-------------------------------------------------------------
+
+Author: Ionut Cadariu  <br></br>
  [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/190f17cbdf994a236a7b242be76f45db7ea9026e)	 2023-06-01 <br></br>
  vault-vault-external-0.2.0 <br></br>
 
