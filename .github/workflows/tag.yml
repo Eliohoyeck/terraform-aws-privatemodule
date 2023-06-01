@@ -37,24 +37,21 @@ jobs:
           git add modules-versions.md
           git commit -m "Update changelog"
           git push --set-upstream origin changelog-$branch_suffix
-          gh pr create --title "Update changelog" --body "Please review and approve this changelog update." --base main --head changelog-$branch_suffix
-          # Get the PR number
-          PR_NUMBER=$(gh pr list --base main | grep changelog-$branch_suffix | awk '{print $1}')
-          echo "::set-output name=pr_number::$PR_NUMBER"
-          echo ${{ steps.changelog.outputs.pr_number }}
+          PR_URL=$(gh pr create --title "Update changelog" --body "Please review and approve this changelog update." --base main --head changelog-$branch_suffix | grep -o 'https://github.com/[a-zA-Z0-9./-]*')
+          echo "PR_URL=${PR_URL}" >> $GITHUB_ENV
 
       - name: Get Slack ID
         id: get_id
         run: |
           SLACK_IDS=$(cat slack_ids.json)
-          echo "::set-output name=slack_id::$(echo $SLACK_IDS | jq -r .${{ github.actor }})"
+          echo "SLACK_ID=$(echo $SLACK_IDS | jq -r .${{ github.actor }})" >> $GITHUB_ENV
         
       - name: Send notification to Slack
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_TITLE: "New PR opened"
-          SLACK_MESSAGE: "<@${{ steps.get_id.outputs.slack_id }}> A new PR for changelog has been opened. Please review and approve. https://github.com/Eliohoyeck/terraform-aws-privatemodule/pull/${{ steps.changelog.outputs.pr_number }}"
+          SLACK_MESSAGE: "<@${{ env.SLACK_ID }}> A new PR for changelog has been opened. Please review and approve. ${{ env.PR_URL }}"
           SLACK_USERNAME: GithubActions
           SLACK_ICON_EMOJI: ":bell:"
-          SLACK_COLOR: "#36a64f"        
+          SLACK_COLOR: "#36a64f" 
