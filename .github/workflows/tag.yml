@@ -38,3 +38,19 @@ jobs:
           git commit -m "Update changelog"
           git push --set-upstream origin changelog-$branch_suffix
           gh pr create --title "Update changelog" --body "Please review and approve this changelog update." --base main --head changelog-$branch_suffix
+          
+      - name: Get Slack ID
+        id: get_id
+        run: |
+          SLACK_IDS=$(cat slack_ids.json)
+          echo "::set-output name=slack_id::$(echo $SLACK_IDS | jq -r .${{ github.event.pusher.name }})"
+        
+      - name: Send notification to Slack
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_TITLE: "New PR opened: ${GITHUB_REF}"
+          SLACK_MESSAGE: "<@${{ steps.get_id.outputs.slack_id }}> A new PR for changelog has been opened. Please review and approve."
+          SLACK_USERNAME: GithubActions
+          SLACK_ICON_EMOJI: ":bell:"
+          SLACK_COLOR: "#36a64f"          
