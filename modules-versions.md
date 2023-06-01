@@ -2,6 +2,13 @@
 -------------------------------------------------------------
 
 Author: Ionut Cadariu  <br></br>
+ [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/98b34412ef88cfe2e064fd3bded92600853873ab)	 2023-06-01 <br></br>
+ aks-auto-unseal-3.1.0 <br></br>
+
+
+-------------------------------------------------------------
+
+Author: Ionut Cadariu  <br></br>
  [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/190f17cbdf994a236a7b242be76f45db7ea9026e)	 2023-06-01 <br></br>
  vault-vault-external-0.2.0 <br></br>
 
