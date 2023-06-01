@@ -44,7 +44,7 @@ jobs:
         id: get_id
         run: |
           SLACK_IDS=$(cat slack_ids.json)
-          echo "SLACK_ID=$(echo $SLACK_IDS | jq -r .${{ github.actor }})" >> $GITHUB_ENV
+          echo "SLACK_ID=$(echo $SLACK_IDS | jq -r '."${{ github.actor }}"')" >> $GITHUB_ENV
         
       - name: Send notification to Slack
         uses: rtCamp/action-slack-notify@v2
