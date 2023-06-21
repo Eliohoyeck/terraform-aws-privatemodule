@@ -1,6 +1,13 @@
 
 -------------------------------------------------------------
 
+Author: Elio Hoyeck  <br></br>
+ [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/e63cadbe2ba51712f3f2ce35206d3737599e2f1e)	 2023-06-21 <br></br>
+ eks-s3-seal-0.11.0 <br></br>
+
+
+-------------------------------------------------------------
+
 Author: Ionut Cadariu  <br></br>
  [commit](https://github.com/Eliohoyeck/terraform-aws-privatemodule/commit/190f17cbdf994a236a7b242be76f45db7ea9026e)	 2023-06-01 <br></br>
  vault-vault-external-0.2.0 <br></br>
