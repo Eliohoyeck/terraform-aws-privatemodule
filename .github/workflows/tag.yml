@@ -28,36 +28,16 @@ jobs:
           #MINOR_STRING_TOKEN: 'minor'
           #PATCH_STRING_TOKEN: 'patch'
 
-      - name: Changelog
-        run: |
-          branch_suffix=$RANDOM
-          git config --local user.name github-actions
-          git config --local user.email github-actions@github.com
-          git checkout -b changelog-$branch_suffix
-          git add modules-versions.md
-          git commit -m "Update changelog"
-          git push --set-upstream origin changelog-$branch_suffix
-          PR_URL=$(gh pr create --title "Update changelog" --body "Please review and approve this changelog update." --base main --head changelog-$branch_suffix | grep -o 'https://github.com/[a-zA-Z0-9./-]*')
-          echo "PR_URL=${PR_URL}" >> $GITHUB_ENV
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
 
-      - name: Get Slack ID
-        id: get_id
-        run: |
-          SLACK_IDS=$(cat slack_ids.json)
-          echo "SLACK_ID=$(echo $SLACK_IDS | jq -r '."${{ github.actor }}"')" >> $GITHUB_ENV
-        
-      - name: Send notification to Slack
-        uses: rtCamp/action-slack-notify@v2
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run release-it
+        run: npx release-it
         env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_TITLE: "New PR opened"
-          SLACK_MESSAGE: "<@${{ env.SLACK_ID }}> A new PR for changelog has been opened. Please review and approve. ${{ env.PR_URL }}"
-          SLACK_USERNAME: GithubActions
-          SLACK_ICON_EMOJI: ":bell:"
-          SLACK_COLOR: "#36a64f" 
-
-      - name: Debug
-        run: |
-          echo "GitHub actor: ${{ github.actor }}"
-          SLACK_IDS=$(cat slack_ids.json)
-          echo "Slack ID: $(echo $SLACK_IDS | jq -r .${{ github.actor }})"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
